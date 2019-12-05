@@ -1,0 +1,5 @@
+/build
+/out
+/.vs
+*.aps
+CMakeSettings.json
