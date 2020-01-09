@@ -356,7 +356,7 @@ void CBattleManager_DetermineRecord(SWRCMDINFO& cmd, int mask, int flag, int id)
 {
 	if ((cmd.prev & mask) != flag && (cmd.now & mask) == flag) {
 		int index = (cmd.record.base + cmd.record.len) % _countof(cmd.record.id);
-		
+
 		cmd.record.id[index] = id;
 		for (int i = 0; i < _countof(cmd.record.id); ++i) // 0-7 = directions,  8-13 = buttons
 			std::cout << cmd.record.id[i] << " ";
@@ -420,8 +420,7 @@ void* __fastcall CBattleManager_OnCreate(void* This)
 
 	static char tmp[1024];
 
-	if (g_subMode == 2 || (g_mainMode >= 1 && g_mainMode <= 5) || g_mainMode == 8) {
-		// Replay, VS COM, VS Player, Practice, Watch
+	if (g_subMode == SWRSSUBMODE_REPLAY || g_mainMode == SWRSMODE_VSCOM || g_mainMode == SWRSMODE_VSPLAYER || g_mainMode == SWRSMODE_VSWATCH || g_mainMode == SWRSMODE_PRACTICE) {
 		my.m_enabled = true;
 	}
 	else {
@@ -469,7 +468,6 @@ void* __fastcall CBattleManager_OnCreate(void* This)
 
 		}
 		else {
-			// ‚â‚Á‚Ï‚è‚â‚ß‚½
 			my.m_enabled = false;
 		}
 	}
@@ -486,7 +484,7 @@ void process_frame(void* This, MYMEMBER& my) {
 	CBattleManager_RefleshCommandInfo(my.m_cmdp2, p2Obj);
 }
 
-bool check_key(uint key, bool mod1, bool mod2, bool mod3) {
+bool check_key(unsigned int key, bool mod1, bool mod2, bool mod3) {
 	//return CheckKeyOneshot(key, mod1, mod2, mod3);
 	int* keytable = (int*)0x8998D8;
 	return keytable[key] == 1;
@@ -595,7 +593,10 @@ int __fastcall CBattleManager_OnProcess(void* This)
 			my.m_forwardIndex = 0;
 		}
 	}
-
+	else
+	{
+		ret = CBattleManager_Process(This);
+	}
 
 	return ret;
 }
@@ -806,8 +807,9 @@ bool is_airborne_frame(void* char_addr) {
 
 bool is_melee_frame(void* object) {
 	void* frame = ACCESS_PTR(object, CF_CURRENT_FRAME_DATA);
-	int aflags = ACCESS_SHORT(frame, FF_AFLAGS);
-	return (aflags & AF_GRAZABLE) == 0;
+	int aflags = ACCESS_INT(frame, FF_AFLAGS);
+
+	return aflags > 0;
 }
 
 bool is_active(void* object) {
@@ -818,11 +820,9 @@ void draw_char_bullets(void* char_addr, bool draw_all_objects = true) {
 	auto objects = get_char_objects((void*)char_addr);
 
 	for (auto e = objects; e; e = e->next) {
-		if (!is_active(e->data)) continue; //All I had to do was to uncomment this line to have bullets hitboxes not remain displayed...
-
-		if (is_melee_frame(e->data) || draw_all_objects) {
+		
+		if (is_active(e->data) || is_melee_frame(e->data))
 			draw_char_boxes(e->data, false);
-		}
 	}
 
 	list::free(objects);
@@ -1003,7 +1003,6 @@ void* __fastcall CBattleManager_OnDestruct(void* This, int mystery, int dyn)
 
 	return CBattleManager_Destruct(This, dyn);
 }
-
 
 
 
