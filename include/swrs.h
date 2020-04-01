@@ -148,7 +148,7 @@ struct SWRFONTDESC {
 struct VC9STRING {
 	enum { _BUF_SIZE = 16 };
 
-	void *alloc;
+	void* alloc;
 	union {
 		char  buf[16];
 		char* ptr;
@@ -156,10 +156,10 @@ struct VC9STRING {
 	size_t size;
 	size_t res;
 
-	operator char *() {
+	operator char* () {
 		return _BUF_SIZE <= res ? body.ptr : body.buf;
 	}
-	operator const char *() const {
+	operator const char* () const {
 		return _BUF_SIZE <= res ? body.ptr : body.buf;
 	}
 };
@@ -184,7 +184,7 @@ struct __declspec(novtable) IFileReader {
 
 // よくわからないもの
 struct UnknownF {
-	void *Unknown[3];
+	void* Unknown[3];
 	float Aaxis;
 	float Baxis;
 };
@@ -228,10 +228,10 @@ enum SWRSSUBMODE {
 
 // union_cast
 template<typename TDest, typename TSrc>
-__forceinline 	
+__forceinline
 TDest union_cast(TSrc src) {
 	static_assert(sizeof(TDest) == sizeof(TSrc), "size_mismatch");
-	union {  TDest dst; TSrc src; } c;
+	union { TDest dst; TSrc src; } c;
 	c.src = src;
 	return c.dst;
 }
@@ -271,25 +271,25 @@ class C {};
 #define CHandleManager_Get(t, p, id) \
 	Ccall(p,0x00402770,t*,(int))(id)
 */
- __declspec(naked) static void**
-Thunk_CHandleManager_Allocate(void *p, int *ret) {
+__declspec(naked) static void**
+Thunk_CHandleManager_Allocate(void* p, int* ret) {
 	// thiscallなのに落ちると思ったらediを使っていたでござる　の巻
 	__asm push edi
-	__asm mov edi, [esp+8]
-	__asm push [esp+12]
-	__asm mov eax, ADDR_ALLOCATE_FUNCTION
+	__asm mov edi, [esp + 8]
+		__asm push[esp + 12]
+		__asm mov eax, ADDR_ALLOCATE_FUNCTION
 	__asm call eax
 	__asm pop edi
 	__asm retn
 }
 #define CHandleManager_Allocate(p, ret) \
 	Thunk_CHandleManager_Allocate(p, ret)
- __declspec(naked) static void
-Thunk_CHandleManager_Deallocate(void *p, int id) {
-	 // thiscall(中略)eaxを使っていたでござる　の巻
-	__asm mov eax, [esp+4]
-	__asm push [esp+8]
-	__asm mov ecx, ADDR_DEALLOCATE_FUNCTION
+__declspec(naked) static void
+Thunk_CHandleManager_Deallocate(void* p, int id) {
+	// thiscall(中略)eaxを使っていたでござる　の巻
+	__asm mov eax, [esp + 4]
+		__asm push[esp + 8]
+		__asm mov ecx, ADDR_DEALLOCATE_FUNCTION
 	__asm call ecx
 	__asm retn
 }
@@ -365,7 +365,7 @@ Thunk_CHandleManager_Deallocate(void *p, int id) {
 
 // 角度cos
 #define DegreeCosine \
-    ((float (__cdecl *)(int deg))0x00409210)
+	((float (__cdecl *)(int deg))0x00409210)
 */
 
 // BGM関連ファイル読み込み関数呼び出しアドレス
