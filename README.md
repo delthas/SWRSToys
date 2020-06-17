@@ -88,7 +88,7 @@ If you have made an SWRSToys module, do contact me either on GitHub or with a PM
 
 ### ForceWindowedFullscreen
 
-Resizes the game window to the size of your screen. Currently if you have a 16:9 monitor you'll still be able to see behind the window.
+Resizes the game window to the size of your screen, including covering your taskbar. Currently if you have a 16:9 monitor you'll still be able to see behind the window.
 
 There are no options to configure. Not compatible with SokuEngine.
 
