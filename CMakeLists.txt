@@ -93,6 +93,11 @@ module(WindowResizer)
 target_sources(WindowResizer PRIVATE
         modules/WindowResizer/APIHook.cpp
         modules/WindowResizer/WindowResizer.cpp)
+		
+module(ForceWindowedFullscreen)
+target_sources(ForceWindowedFullscreen PRIVATE
+        modules/ForceWindowedFullscreen/APIHook.cpp
+        modules/ForceWindowedFullscreen/ForceWindowedFullscreen.cpp)
 
 configure_file("swrstoys/SWRSToys.ini.in" "SWRSToys.ini" @ONLY NEWLINE_STYLE CRLF)
 

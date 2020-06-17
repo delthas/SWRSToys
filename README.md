@@ -86,6 +86,12 @@ If you have made an SWRSToys module, do contact me either on GitHub or with a PM
 
 **Make the game window resizable.**
 
+### ForceWindowedFullscreen
+
+Resizes the game window to the size of your screen. Currently if you have a 16:9 monitor you'll still be able to see behind the window.
+
+There are no options to configure. Not compatible with SokuEngine.
+
 ## Making a module
 
 - Make a new folder in `modules/`. You can copy an existing module and adapt it.
@@ -94,7 +100,11 @@ If you have made an SWRSToys module, do contact me either on GitHub or with a PM
 
 ## Building
 
-Install Visual Studio (or CMake and the Visual C++ Build Tools). Import the directory into Visual Studio, it will be recognized automatically.
+Install Visual Studio (or CMake and the Visual C++ Build Tools). 
+
+If on VS2015 (or older?): Open a commmand prompt and enter `git submodule init && git submodule update && cmake .`
+
+If on something newer: Import the directory into Visual Studio, it will be recognized automatically.
 
 MinGW and Cygwin are not supported (`__thiscall` is needed in order to be compatible with the base game).
 
