@@ -42,6 +42,26 @@ If you have made an SWRSToys module, do contact me either on GitHub or with a PM
 
 **Do some misceallenous patches to the game, such as disallowing spectating by default.**
 
+Edit MemoryPatch.ini to enable/disable options.
+
+Available patches:
+
+- 16bitsColor: Enable 16 bit color.
+
+- InputFreedom: Allow gamepad input even when the window is not active.
+
+- DefaultDenyWatch: Disallow spectating by default.
+
+- DefaultDenyBattle: Spectate by default.
+
+- AllowMultiInstance: Allow running multiple instances of the game at once.
+
+- DisableWeatherEffect: Disable all weather effects.
+
+- AlwaysRandomMusic: always play random music regardless of stage choice
+
+- NativeDPadFix: Alternative DPad fix without dinput8 hooking, but no circle pad support and XInput only.
+
 ### NetBattleCounter
 
 **Display the number of consecutive online matches you play, and optionally play specific sounds on consecutive games played.**
@@ -88,7 +108,9 @@ If you have made an SWRSToys module, do contact me either on GitHub or with a PM
 
 ### ForceWindowedFullscreen
 
-Resizes the game window to the size of your screen, including covering your taskbar. Currently if you have a 16:9 monitor you'll still be able to see behind the window.
+**Resizes the game window to the size of your screen, including covering your taskbar. **
+
+Currently if you have a 16:9 monitor you'll still be able to see behind the window.
 
 There are no options to configure. Not compatible with SokuEngine.
 
