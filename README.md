@@ -108,7 +108,7 @@ Available patches:
 
 ### ForceWindowedFullscreen
 
-**Resizes the game window to the size of your screen, including covering your taskbar. **
+**Resizes the game window to the size of your screen, including covering your taskbar.**
 
 Currently if you have a 16:9 monitor you'll still be able to see behind the window.
 
