@@ -102,17 +102,15 @@ Available patches:
 
 *This mod uses the UPnP NAT technology, which lets applications automatically request a port forwarding without user intervention. This technology is known to be disabled by default on most routers and might therefore not work for everyone.*
 
+### WindowedFullscreen
+
+**Make the game window fullscreen, but without stretching and with fast alt+tab.**
+
+*This module does not have a configuration file, and is not compatible with SokuEngine.*
+
 ### WindowResizer
 
 **Make the game window resizable.**
-
-### ForceWindowedFullscreen
-
-**Resizes the game window to the size of your screen, including covering your taskbar.**
-
-Currently if you have a 16:9 monitor you'll still be able to see behind the window.
-
-There are no options to configure. Not compatible with SokuEngine.
 
 ## Making a module
 
