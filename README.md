@@ -1,5 +1,7 @@
 # SWRSToys [![builds.sr.ht status](https://builds.sr.ht/~delthas/SWRStoys.svg)](https://builds.sr.ht/~delthas/SWRStoys?)
 
+## This repository was moved to https://github.com/SokuDev/SokuMods/ and is now archived.
+
 A modding framework for Touhou Hisoutensoku (12.3).
 
 This repository was originally created from the original SWRSToys release by *Anonymous Coward* with the following goals:
